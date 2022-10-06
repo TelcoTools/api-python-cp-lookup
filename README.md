@@ -10,3 +10,7 @@ All that is coming in a future release, however this is a completely self contai
 It'll be available as an API endpoint for you to query yourself, but you can also pull the code and run your own copy.
 
 To get it running, there are some nice scripts all setup and ready for you to get going in less than 5 minutes. Knowledge of the Linux command line is very much advised.
+
+## N.B.
+
+This is very early days and I may remove this repo in favour of a dockerised implementation.
