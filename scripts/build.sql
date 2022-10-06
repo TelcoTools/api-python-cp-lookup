@@ -244,7 +244,7 @@ INSERT INTO "known_ported" ("number", "status", "cp", "num_length", "use", "last
 ('8456021111', 'Allocated', 'BT SMS Text to Speech Delivery service', NULL, 'Used on the BT Network when an SMS is sent to a landline number or number otherwise incapable of receiving SMS''. 08005875252 can be dialled to unsubscribe from service.', NULL, '2018-01-08 11:56:49', '\0', NULL);
 
 -- 6. Truncate the live table then sanitise and insert the temp data into the live table
-DROP TABLE `numbering_allocation`;
+DROP TABLE IF EXISTS `numbering_allocation`;
 CREATE TABLE`numbering_allocation`(`number`integer NOT NULL,`status`varchar(64)DEFAULT NULL,`cp`varchar(255)DEFAULT NULL,`num_length`varchar(16)DEFAULT NULL,`use`varchar(255)DEFAULT NULL,`last_change`timestamp NULL DEFAULT NULL,`timestamp`timestamp NULL DEFAULT NULL,PRIMARY KEY(`number`));
 
 INSERT INTO`numbering_allocation`(`number`,`status`,`cp`,`num_length`,`last_change`,`use`,`timestamp`)SELECT REPLACE(`NMSNumberBlock`,' ','')AS`number_range`,`status`,CASE`Communications Provider`WHEN"" THEN NULL ELSE`Communications Provider`END,CASE`Number Length`WHEN"" THEN NULL ELSE`Number Length`END,CASE`Change`WHEN"" THEN NULL ELSE(SUBSTR(`Change`,-4)||"-"||SUBSTR(SUBSTR(`Change`,-7),0,3)||"-"||SUBSTR(`Change`,0,3)||" 00:00:00")END,NULL,DATETIME('now','localtime')FROM`S1`;
