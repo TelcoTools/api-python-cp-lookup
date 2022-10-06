@@ -38,7 +38,7 @@ SELECT * FROM numbering_allocation WHERE number = 8000480;
 
 Result:
 8000480|Allocated|Vodafone Ltd (Energis)|10 digit numbers|No specific use data recorded|2007-07-05 00:00:00|2022-10-06 17:26:51
-``
+```
 Which means that Vodafone are the rangeholder for +448000480XXX and your DB is ready!
 
 ## N.B.
